@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Movie Recommendations System</title>
+    <style>
+body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    width: 100%;
+    background-image: url("{{ url_for('static', filename='bg.jpg') }}");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    
+}
+</style>
+    <link rel="icon" href="/static/favicon.ico">
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+
+<body>
+
+<h1 class="logo">🎬 Movie Recommendation System</h1>
+
+<div class="search-box">
+    <input type="text" id="movieInput" placeholder="Search movies...">
+    
+    <!-- ✅ FIXED FUNCTION NAME -->
+    <button onclick="recommend()">Recommend</button>
+</div>
+
+<ul id="suggestions"></ul>
+
+<!-- ✅ FIXED ID -->
+<div id="result" class="row"></div>
+
+<script src="/static/autocomplete.js"></script>
+<script src="/static/recommend.js"></script>
+
+</body>
+</html>
