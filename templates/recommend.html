@@ -11,7 +11,7 @@
             background: black;
         }
 
-        /* 🔥 HERO BACKGROUND */
+        /*  HERO BACKGROUND */
         .hero {
             background: url('{{ movie.backdrop }}') center/cover;
             height: 60vh;
@@ -28,7 +28,7 @@
             font-size: 45px;
         }
 
-        /* 🎬 Poster card */
+        /*  Poster card */
         .poster-card {
             position: absolute;
             left: 50px;
@@ -51,7 +51,7 @@
             border-radius: 5px;
         }
 
-        /* 🎭 CAST */
+        /* CAST */
         .cast {
             display: flex;
             gap: 20px;
@@ -73,7 +73,7 @@
             transform: scale(1.1);
         }
 
-        /* 🎥 MODAL */
+        /*  MODAL */
         .modal {
             display: none;
             position: fixed;
@@ -107,11 +107,11 @@
 
 <body>
 
-<!-- 🎬 HERO -->
+<!--  HERO -->
 <div class="hero">
     <div class="overlay">
         <h1>{{ movie.title }}</h1>
-        <p>⭐ {{ movie.rating }} | {{ movie.release_date }}</p>
+        <p> {{ movie.rating }} | {{ movie.release_date }}</p>
     </div>
 </div>
 
@@ -121,18 +121,18 @@
 
     <p>{{ movie.overview }}</p>
 
-    <!-- 🎭 Genres -->
+    <!--  Genres -->
     {% for g in movie.genres %}
         <span class="tag">{{ g }}</span>
     {% endfor %}
 
-    <!-- 🎥 Trailer -->
+    <!-- Trailer -->
     {% if movie.trailer %}
         <h2>Trailer</h2>
         <iframe width="100%" height="400" src="{{ movie.trailer }}"></iframe>
     {% endif %}
 
-    <!-- 👨‍🎤 CAST -->
+    <!--  CAST -->
     <h2>Top Cast</h2>
     <div class="cast">
         {% for actor in movie.cast %}
@@ -143,7 +143,7 @@
         {% endfor %}
     </div>
 
-    <!-- 📝 REVIEWS -->
+    <!--  REVIEWS -->
     <div class="reviews">
         <h2>User Reviews</h2>
         {% for r in movie.reviews %}
@@ -153,7 +153,7 @@
 
 </div>
 
-<!-- 🔥 MODAL -->
+<!--  MODAL -->
 <div id="modal" class="modal" onclick="closeModal()">
     <div class="modal-content" id="modalContent"></div>
 </div>
