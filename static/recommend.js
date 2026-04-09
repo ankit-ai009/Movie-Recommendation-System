@@ -38,7 +38,7 @@ function recommend() {
             div.innerHTML = `
                 <h3>${movie.title}</h3>
                 <img src="${poster}" alt="poster">
-                <p>⭐ ${movie.rating}</p>
+                <p> ${movie.rating}</p>
             `;
              div.onclick = () => {
         window.location.href = `/movie/${encodeURIComponent(movie.title)}`;
