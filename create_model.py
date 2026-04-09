@@ -1,41 +1,27 @@
-# create_model.py
-
-import pandas as pd
 import pickle
+import pandas as pd
 from sklearn.feature_extraction.text import TfidfVectorizer
-from sklearn.metrics.pairwise import cosine_similarity
 
-print("🚀 Starting model creation...")
+# 🔹 Load your movies data
+movies = pickle.load(open('movies.pkl', 'rb'))
+movies = pd.DataFrame(movies)
 
-# 🔹 STEP 1: Load RAW dataset (IMPORTANT)
-# 👉 Make sure this file exists in your repo
-movies = pd.read_csv('tmdb_5000_movies.csv')
+print("Movies loaded successfully ✅")
 
-print("✅ CSV loaded successfully")
+# 🔹 Check if 'tags' column exists
+if 'tags' not in movies.columns:
+    raise Exception("❌ 'tags' column not found in dataset")
 
-# 🔹 STEP 2: Select useful columns
-movies = movies[['id', 'title', 'overview']]
-movies.dropna(inplace=True)
-
-# 🔹 STEP 3: Create 'tags' column (simple version)
-movies['tags'] = movies['overview']
-
-print("✅ Tags created")
-
-# 🔹 STEP 4: Vectorization
+# 🔹 Create vectorizer
 vectorizer = TfidfVectorizer(max_features=5000, stop_words='english')
+
+# 🔹 Fit and transform
 vectors = vectorizer.fit_transform(movies['tags'])
 
-print("✅ Vectorization done")
+print("Vectorization done ✅")
 
-# 🔹 STEP 5: Similarity matrix (OPTIONAL but useful)
-similarity = cosine_similarity(vectors)
-
-print("✅ Similarity matrix created")
-
-# 🔹 STEP 6: Save files
-pickle.dump(movies.to_dict(), open('movies.pkl', 'wb'))
-pickle.dump(similarity, open('similarity.pkl', 'wb'))
+# 🔹 Save new files
 pickle.dump(vectorizer, open('transform.pkl', 'wb'))
+pickle.dump(vectors, open('nlp_model.pkl', 'wb'))
 
-print("🎉 All model files created successfully!")
+print("✅ New transform.pkl and nlp_model.pkl created successfully!")
