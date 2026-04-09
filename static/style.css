@@ -59,7 +59,7 @@ button {
 .info {
     max-width: 600px;
 }
-/* 🎬 Movie Grid */
+/*  Movie Grid */
 .row {
     display: flex;
     flex-wrap: wrap;
@@ -67,7 +67,7 @@ button {
     gap: 20px;
 }
 
-/* 🎬 Movie Card */
+/*  Movie Card */
 #result div {
     width: 180px;
     background: #111;
@@ -78,7 +78,7 @@ button {
     cursor: pointer;
 }
 
-/* 🎥 Poster Image */
+/*  Poster Image */
 #result img {
     width: 100%;
     height: 260px;
@@ -86,20 +86,20 @@ button {
     border-bottom: 2px solid #222;
 }
 
-/* 🎬 Title */
+/*  Title */
 #result h3 {
     font-size: 14px;
     padding: 8px;
 }
 
-/* ⭐ Rating */
+/*  Rating */
 #result p {
     font-size: 13px;
     color: #f5c518;
 }
 
-/* 🔥 Hover Effect */
-/* 🔥 Movie Card Base */
+/*  Hover Effect */
+/*  Movie Card Base */
 #result div {
     position: relative;
     width: 180px;
@@ -110,19 +110,19 @@ button {
     transition: 0.3s;
 }
 
-/* 🎥 Poster */
+/*  Poster */
 #result img {
     width: 100%;
     height: 260px;
     object-fit: cover;
 }
 
-/* ✨ Hover Zoom */
+/*  Hover Zoom */
 #result div:hover {
     transform: scale(1.08);
 }
 
-/* 🎬 Overlay Effect */
+/*  Overlay Effect */
 #result div::after {
     content: "🎬 View Details";
     position: absolute;
@@ -137,7 +137,7 @@ button {
     transition: 0.3s;
 }
 
-/* 🔥 Show overlay on hover */
+/*  Show overlay on hover */
 #result div:hover::after {
     opacity: 1;
 }
