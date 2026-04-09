@@ -1,7 +1,7 @@
 let input = document.getElementById("movieInput");
 let suggestionBox = document.getElementById("suggestions");
 
-// ⏳ debounce to reduce API calls
+//  debounce to reduce API calls
 let timeout = null;
 
 input.addEventListener("keyup", function () {
@@ -11,7 +11,7 @@ input.addEventListener("keyup", function () {
     timeout = setTimeout(() => {
         let query = input.value.trim();
 
-        // ❌ stop if empty
+        //  stop if empty
         if (query.length === 0) {
             suggestionBox.innerHTML = "";
             return;
@@ -52,7 +52,7 @@ input.addEventListener("keyup", function () {
 });
 
 
-// 🔥 Hide suggestions when clicking outside
+//  Hide suggestions when clicking outside
 document.addEventListener("click", function(e) {
     if (!input.contains(e.target) && !suggestionBox.contains(e.target)) {
         suggestionBox.innerHTML = "";
