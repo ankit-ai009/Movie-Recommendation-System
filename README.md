@@ -35,7 +35,7 @@ Interstellar
 Avengers
 Star Trek
 
-🎯 Future Improvements
+# Future Improvements
 Add deep learning models
 Improve recommendation accuracy
 Deploy as a web app
