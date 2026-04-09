@@ -4,18 +4,18 @@ import requests
 import os
 from dotenv import load_dotenv
 
-load_dotenv()  # ✅ Load .env file
+load_dotenv()  #  Load .env file
 
 app = Flask(__name__)
 
-# 🔹 Load models
+#  Load models
 movies = pickle.load(open('movies.pkl', 'rb'))
 similarity = pickle.load(open('similarity.pkl', 'rb'))
 
-# ✅ Get API key securely
+#  Get API key securely
 TMDB_API_KEY = os.getenv("TMDB_API_KEY")
 
-# 🔹 Fetch movie details
+#  Fetch movie details
 def fetch_movie_details(movie_id):
     url = f"https://api.themoviedb.org/3/movie/{movie_id}?api_key={TMDB_API_KEY}&append_to_response=videos,credits,reviews"
     data = requests.get(url).json()
@@ -65,7 +65,7 @@ def fetch_movie_details(movie_id):
     }
 
 
-# 🔹 Recommend movies
+#  Recommend movies
 def recommend(movie):
     if movie not in movies['title'].values:
         return []
@@ -88,20 +88,20 @@ def recommend(movie):
     return results
 
 
-# 🔹 Home page
+# Home page
 @app.route('/')
 def home():
     return render_template('home.html')
 
 
-# 🔹 Recommendation API
+#  Recommendation API
 @app.route('/recommend', methods=['POST'])
 def recommend_api():
     movie_name = request.json['movie']
     return jsonify(recommend(movie_name))
 
 
-# 🔹 Autocomplete
+#  Autocomplete
 @app.route('/autocomplete', methods=['POST'])
 def autocomplete():
     data = request.get_json()
@@ -114,7 +114,7 @@ def autocomplete():
     return jsonify(results['title'].head(5).tolist())
 
 
-# 🔹 Actor API
+#  Actor API
 @app.route('/actor/<int:actor_id>')
 def actor_details(actor_id):
 
@@ -132,7 +132,7 @@ def actor_details(actor_id):
     return jsonify(actor)
 
 
-# 🔹 Movie Details PAGE (ONLY ONE VERSION ✅)
+#  Movie Details PAGE (ONLY ONE VERSION )
 @app.route('/movie/<movie_name>')
 def movie_details(movie_name):
 
@@ -147,6 +147,6 @@ def movie_details(movie_name):
     return render_template("recommend.html", movie=details)
 
 
-# 🔹 Run app
+#  Run app
 if __name__ == '__main__':
     app.run()
